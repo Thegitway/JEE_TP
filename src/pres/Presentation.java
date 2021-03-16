@@ -1,35 +1,24 @@
 package pres;
 
-import dao.IDao;
 import metier.IMetier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.File;
-import java.lang.reflect.Method;
-import java.util.Scanner;
+
 
 public class Presentation {
     public static void main(String[] args) throws Exception{
-        //methode 1 using scanner
-     try {
-         File f=new File("config.txt");
-         Scanner scanner = new Scanner(f);
-         //dao
-         String daoCalssName = scanner.nextLine();
-         Class cdao = Class.forName(daoCalssName);
-         IDao dao = (IDao) cdao.newInstance();
-         //metier
-         String metierCalssName = scanner.nextLine();
-         Class cmetier = Class.forName(metierCalssName);
-         IMetier metier = (IMetier) cmetier.newInstance();
-         Method m= cmetier.getMethod("setDao",IDao.class);
-         m.invoke(metier,dao);
-
-         System.out.println(metier.calcul());
-
-     }catch(Exception e)
-     {
-       System.out.println("Erreur : "+e);
-     }
+        //methode 1 xml
+        try {
+            File f=new File("config1.xml");
+            ApplicationContext ctx = new ClassPathXmlApplicationContext(f.getPath());
+            IMetier metier = (IMetier) ctx.getBean("metier");
+            System.out.println(metier.calcul());
+        }catch(Exception e)
+        {
+            System.out.println("Erreur : "+e.getMessage());
+        }
 
 
     }
