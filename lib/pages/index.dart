@@ -35,12 +35,20 @@ class _IndexPageState extends State<Index> {
             appBar: AppBar(
               title: Text("JEE"),
             ),
-            body: Table(
-              children: [
-                TableRow(
-                  children: [Text(p.first.nom), Text(p.first.score.toString())],
-                ),
-              ],
+            body: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Table(
+                border: TableBorder.all(width: 1),
+                children: [
+                  for (Patient pp in p)
+                    TableRow(
+                      children: [
+                        Center(child: Text(pp.nom)),
+                        Center(child: Text(pp.score.toString()))
+                      ],
+                    ),
+                ],
+              ),
             ),
           );
         } else {
