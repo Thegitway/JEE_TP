@@ -1,4 +1,4 @@
-package com.tpjpa.demo.entities;
+package com.tpjpa.demo.moduls;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,12 +9,16 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor @ToString
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public
 class Patient {
-@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-@Column(length = 25)
+    @Column(length = 25)
     private String nom;
     @Temporal(TemporalType.DATE)
     private Date date;

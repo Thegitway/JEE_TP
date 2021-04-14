@@ -1,10 +1,10 @@
 package com.tpjpa.demo.repository;
 
-import com.tpjpa.demo.entities.Patient;
+import com.tpjpa.demo.moduls.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PatientRepository extends JpaRepository<Patient,Long> {
+public interface PatientRepository extends JpaRepository<Patient, Long> {
     List<Patient> findByNomContains(String name);
 }
