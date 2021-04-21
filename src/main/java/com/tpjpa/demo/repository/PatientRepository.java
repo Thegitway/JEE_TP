@@ -1,10 +1,10 @@
 package com.tpjpa.demo.repository;
 
 import com.tpjpa.demo.moduls.Patient;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface PatientRepository extends JpaRepository<Patient, Long> {
-    List<Patient> findByNomContains(String name);
+    Page<Patient> findByNomContains(String name, Pageable pageable);
 }

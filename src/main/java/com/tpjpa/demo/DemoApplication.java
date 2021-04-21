@@ -21,9 +21,13 @@ public class DemoApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
        try {
-           patientRepository.save(new Patient(null,"bobe",new Date(), 1000, false));
+           patientRepository.save(new Patient(null,"bobe",new Date(), 1091, false));
            patientRepository.save(new Patient(null,"jakir",new Date(), 1000, false));
-           System.out.println(patientRepository.findByNomContains("a"));
+           patientRepository.save(new Patient(null,"tom",new Date(), 1000, false));
+           patientRepository.save(new Patient(null,"jerry",new Date(), 600, false));
+           patientRepository.save(new Patient(null,"cat",new Date(), 1500, true));
+           patientRepository.save(new Patient(null,"dog",new Date(), 5500, true));
+System.out.print("GOOD");
        }catch(Exception e)
        {
            System.out.println(e.getMessage());

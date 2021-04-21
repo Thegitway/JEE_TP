@@ -10,6 +10,13 @@
 <div class="card">
     <div class="card-header">Liste de patients</div>
     <div class="card-body">
+        <form method="get" th:action="@{patients}">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Name</span>
+            <input th:value="${keyword}" name="keyword" type="text" class="form-control" placeholder="word" aria-label="Username" aria-describedby="basic-addon1">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+        </form>
         <table class="table" border="3">
             <tr><th>Id</th><th>Name</th><th>Date de naissance
                 </th><th>malade</th>
@@ -22,6 +29,12 @@
 
             </tr>
         </table>
+
+        <ul class="nav nav-pills">
+            <li th:each="page,status:${page}">
+            <a class=btn th:href="@{patients(page=${status.index},size=${size},keyword=${keyword})}" th:text="${status.index}"></a>
+            </li>
+        </ul>
     </div>
 </div>
 </div>
