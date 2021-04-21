@@ -17,7 +17,7 @@
             <button type="submit" class="btn btn-primary">Search</button>
         </div>
         </form>
-        <table class="table" border="3">
+        <table class="table" border="0">
             <tr><th>Id</th><th>Name</th><th>Date de naissance
                 </th><th>malade</th>
             </tr>
@@ -26,7 +26,7 @@
                 <td th:text="${p.nom}"></td>
                 <td th:text="${p.birth}"></td>
                 <td th:text="${p.isSick}"></td>
-
+                <td><a onclick="return confirm('are you sure ?')" class ="btn btn-danger" th:href="@{patient/delete(id=${p.id})}"/>Delete</td>
             </tr>
         </table>
 
