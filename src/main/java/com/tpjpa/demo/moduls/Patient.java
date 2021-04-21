@@ -13,6 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Table(name="Patients")
 public
 class Patient {
     @Id
@@ -20,8 +21,8 @@ class Patient {
     private Long id;
     @Column(length = 25)
     private String nom;
-    @Temporal(TemporalType.DATE)
-    private Date date;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date birth;
     private double score;
     private boolean isSick;
 
