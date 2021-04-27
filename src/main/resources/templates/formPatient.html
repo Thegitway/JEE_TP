@@ -17,22 +17,23 @@
                 <form method="post" th:action="@{savePatient}">
                     <div class="form-group">
                         <span class="input-group-text w-25" id="lName">Name :</span>
-                        <input  name="name" type="text" class="form-control" th:value="${patientf.nom}" >
-                        <span class="text-danger ml-1"></span>
+                        <input   name="nom"  type="text" class="form-control" th:value="${patient.nom}" >
+                        <span class="text-danger ml-1" th:errors="${patient.nom}"></span>
                     </div>
+
                     <div class="form-group">
                         <span class="input-group-text w-25" id="lDate">Sick :</span>
-                        <input name="date" th:value="${patientf.birth}"   type="date" class="form-check-inline ml-1" >
+                        <input name="birth" th:value="${patient.birth}" class="form-control"  type="date"  >
                         <span class="text-danger ml-1" ></span>
                     </div>
                     <div class="form-group">
                         <span class="input-group-text w-25" id="lScore">score :</span>
-                        <input name="score" th:value="${patientf.score}"  type="number" class="form-check-inline ml-1" >
+                        <input name="score" th:value="${patient.score}" class="form-control" type="number" >
                         <span class="text-danger ml-1" ></span>
                     </div>
                     <div class="form-group">
                         <span class="input-group-text w-25" id="lMalade">Sick :</span>
-                        <input name="malade" th:checked="${patientf.isSick}"  type="checkbox" class="form-check-inline ml-1" >
+                        <input name="isSick" th:checked="${patient.isSick}"  type="checkbox" class="form-check-inline ml-1" >
                         <span class="text-danger ml-1" ></span>
                     </div>
                         <button type="submit" class="btn btn-success">Save</button>
