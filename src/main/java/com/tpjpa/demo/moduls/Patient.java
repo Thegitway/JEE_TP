@@ -4,8 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -20,8 +23,11 @@ class Patient {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column(length = 25)
+    @NotNull
+    @Size(min = 5,max = 25)
     private String nom;
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birth;
     private double score;
     private boolean isSick;

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultrag.net.nz/thymleaf/layout"
+      layout:decorator="template1.html"
+>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <title>Ajout des patients</title>
+</head>
+<body>
+<div layout:fragment="pageContent">
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">Ajout de patient</div>
+            <div class="card-body">
+                <form method="post" th:action="@{savePatient}">
+                    <div class="form-group">
+                        <span class="input-group-text w-25" id="lName">Name :</span>
+                        <input  name="name" type="text" class="form-control" th:value="${patientf.nom}" >
+                        <span class="text-danger ml-1"></span>
+                    </div>
+                    <div class="form-group">
+                        <span class="input-group-text w-25" id="lDate">Sick :</span>
+                        <input name="date" th:value="${patientf.birth}"   type="date" class="form-check-inline ml-1" >
+                        <span class="text-danger ml-1" ></span>
+                    </div>
+                    <div class="form-group">
+                        <span class="input-group-text w-25" id="lScore">score :</span>
+                        <input name="score" th:value="${patientf.score}"  type="number" class="form-check-inline ml-1" >
+                        <span class="text-danger ml-1" ></span>
+                    </div>
+                    <div class="form-group">
+                        <span class="input-group-text w-25" id="lMalade">Sick :</span>
+                        <input name="malade" th:checked="${patientf.isSick}"  type="checkbox" class="form-check-inline ml-1" >
+                        <span class="text-danger ml-1" ></span>
+                    </div>
+                        <button type="submit" class="btn btn-success">Save</button>
+
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
