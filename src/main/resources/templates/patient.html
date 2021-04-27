@@ -1,42 +1,47 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org/">
+<html xmlns:th="https://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultrag.net.nz/thymleaf/layout"
+      layout:decorator="template1.html"
+>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <title>Liste des patients</title>
 </head>
 <body>
-<div class="container mt-5">
-<div class="card">
-    <div class="card-header">Liste de patients</div>
-    <div class="card-body">
-        <form method="get" th:action="@{patients}">
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Name</span>
-            <input th:value="${keyword}" name="keyword" type="text" class="form-control" placeholder="word" aria-label="Username" aria-describedby="basic-addon1">
-            <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-        </form>
-        <table class="table" border="0">
-            <tr><th>Id</th><th>Name</th><th>Date de naissance
-                </th><th>malade</th>
-            </tr>
-            <tr th:each="p:${patients}">
-                <td th:text="${p.id}"></td>
-                <td th:text="${p.nom}"></td>
-                <td th:text="${p.birth}"></td>
-                <td th:text="${p.isSick}"></td>
-                <td><a onclick="return confirm('are you sure ?')" class ="btn btn-danger" th:href="@{patient/delete(id=${p.id})}"/>Delete</td>
-            </tr>
-        </table>
+<div layout:fragment="pageContent">
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">Liste de patients</div>
+            <div class="card-body">
+                <form method="get" th:action="@{patients}">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Name</span>
+                        <input th:value="${keyword}" name="keyword" type="text" class="form-control" placeholder="word" aria-label="Username" aria-describedby="basic-addon1">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+                <table class="table" border="0">
+                    <tr><th>Id</th><th>Name</th><th>Date de naissance
+                    </th><th>malade</th>
+                    </tr>
+                    <tr th:each="p:${patients}">
+                        <td th:text="${p.id}"></td>
+                        <td th:text="${p.nom}"></td>
+                        <td th:text="${p.birth}"></td>
+                        <td th:text="${p.isSick}"></td>
+                        <td><a onclick="return confirm('are you sure ?')" class ="btn btn-danger" th:href="@{patient/delete(id=${p.id})}"/>Delete</td>
+                    </tr>
+                </table>
 
-        <ul class="nav nav-pills">
-            <li th:each="page,status:${page}">
-            <a class=btn th:href="@{patients(page=${status.index},size=${size},keyword=${keyword})}" th:text="${status.index}"></a>
-            </li>
-        </ul>
+                <ul class="nav nav-pills">
+                    <li th:each="page,status:${page}">
+                        <a class=btn th:href="@{patients(page=${status.index},size=${size},keyword=${keyword})}" th:text="${status.index}"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
 </div>
 
 </body>
