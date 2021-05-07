@@ -30,7 +30,9 @@
                         <td th:text="${p.nom}"></td>
                         <td th:text="${p.birth}"></td>
                         <td th:text="${p.isSick}"></td>
-                        <td><a onclick="return confirm('are you sure ?')" class ="btn btn-danger" th:href="@{patient/delete(id=${p.id})}"/>Delete</td>
+                        <td><a onclick="return confirm('are you sure ?')" class ="btn btn-danger" th:href="@{/deletePatient(id=${p.id})}"/>Delete</td>
+                        <td><a  class ="btn btn-info" th:href="@{/editPatient(id=${p.id})}"/>Edit</td>
+
                     </tr>
                 </table>
 

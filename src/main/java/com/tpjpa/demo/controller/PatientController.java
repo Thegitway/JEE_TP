@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Controller
 public class PatientController {
@@ -39,7 +40,7 @@ public class PatientController {
     }
 
 
-    @GetMapping(path="/patient/delete")
+    @GetMapping(path="/deletePatient")
     public String deletePatient(Long id)
     {
         patientRepository.deleteById(id);
@@ -48,7 +49,9 @@ public class PatientController {
   @GetMapping(path = "/formPatient")
     String ajoutPatient(Model model)
     {
+
         model.addAttribute("patient",new Patient());
+        model.addAttribute("mode","new");
         return "formPatient";
     }
     @PostMapping("/savePatient")
@@ -59,10 +62,30 @@ public class PatientController {
         {System.out.println(bindingResult);
             return "formPatient";}
 
-        System.out.println(bindingResult);
-        System.out.println(patient);
         patientRepository.save(patient);
         return "redirect:/patients";
+    }
+
+    @GetMapping("/editPatient")
+    public String editPatient(Model model,Long id)
+    {
+        try{
+
+            Patient patient= patientRepository.findById(id).get();
+            model.addAttribute("patient",patient);
+            model.addAttribute("mode","edit");
+            return "formPatient";}
+        catch(NoSuchElementException e)
+        {System.out.println(e.getMessage());}
+        return "patient";
+
+
+    }
+
+    @GetMapping("/login")
+    String login()
+    {
+        return"redirect:/patients";
     }
 
 
