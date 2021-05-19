@@ -17,7 +17,7 @@
             <div class="card-body">
                 <form method="post" th:action="@{savePatient}">
                     <div class="form-group " th:if="${mode=='edit'}" >
-                        <span class="input-group-text w-25" id="lId">Name :</span>
+                        <span class="input-group-text w-25" id="lId">ID :</span>
                         <input   name="id"  type="text" class="form-control" th:value="${patient.id}" >
                         <span class="text-danger ml-1" th:errors="${patient.id}"></span>
                     </div>
@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="form-group">
-                        <span class="input-group-text w-25" id="lDate">Sick :</span>
+                        <span class="input-group-text w-25" id="lDate">Birth :</span>
                         <input name="birth" th:value="${patient.birth}" class="form-control"  type="date"  >
                         <span class="text-danger ml-1" ></span>
                     </div>
